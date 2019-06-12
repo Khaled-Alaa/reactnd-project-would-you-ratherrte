@@ -8,12 +8,12 @@ import {
 } from "react-router-dom";
 import { connect } from "react-redux";
 
-import Loggin from "./components/Loggin";
-import NoMatch from "./components/NoMatch";
-import Question from "./components/Question";
-import Questions from "./components/Questions";
-import Leaderboard from "./components/Leaderboard";
-import Create from "./components/Create";
+import Loggin from "../Loggin";
+import NoMatch from "../NoMatch";
+import Question from "../Question";
+import Questions from "../Questions";
+import Leaderboard from "../Leaderboard";
+import Create from "../Create";
 
 import Grid from "@material-ui/core/Grid";
 import AppBar from "@material-ui/core/AppBar";
@@ -24,7 +24,7 @@ import { initialData } from "../../redux/actions/shared";
 import { withStyles } from "@material-ui/core/styles";
 import { loggOut } from "../../redux/actions/loggedUser";
 
-import style from "./App.css";
+import "./style.css";
 
 const styles = theme => ({
   root: {
