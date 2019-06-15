@@ -88,11 +88,7 @@ class App extends Component {
                           </Button>
                         </div>
                       ) : (
-                          <Link to="/">
-                            <div>
-                              <h3></h3>{" "}
-                            </div>
-                          </Link>
+                          ""
                         )}
                     </Grid>
                     <Grid item xs={1}></Grid>
@@ -106,11 +102,7 @@ class App extends Component {
                           </Button>
                         </div>
                       ) : (
-                          <Link to="/">
-                            <div>
-                              <h3></h3>{" "}
-                            </div>
-                          </Link>
+                          ""
                         )}
                     </Grid>
                     <Grid item xs={2}></Grid>

@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import moment from "moment";
-import { Link } from "react-router-dom";
+//import moment from "moment";
+//import { Link } from "react-router-dom";
 import { answerQuestion } from "../../redux/actions/polls";
 
 import Avatar from "@material-ui/core/Avatar";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
+//import Button from "@material-ui/core/Button";
 
 import { withStyles } from "@material-ui/core/styles";
 
