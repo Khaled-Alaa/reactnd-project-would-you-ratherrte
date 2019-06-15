@@ -63,12 +63,14 @@ class Leaderboard extends Component {
         container
         className={styles.root}
         spacing={8}
+        item xs={11}
         justify="center"
         alignItems="center">
+          <Grid item xs={1}></Grid>
         {this.state.users.map(user => (
-          <Grid item xs={10} className={styles.item}>
+          <Grid item xs={3} className={styles.item}>
             <Paper className={styles.paper}>
-              <Avatar
+              <Avatar 
                 src={this.props.users[user].avatarURL}
                 className={styles.avatar}
               />

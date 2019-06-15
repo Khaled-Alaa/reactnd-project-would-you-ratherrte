@@ -62,7 +62,7 @@ class App extends Component {
                     className={styles.root}
                     spacing={40}
                     justify="space-between">
-                    <Grid item xs={2}>
+                    <Grid item xs={3}>
                       {this.props.loggedUser ? (
                         <Link to="/">
                           <div>
@@ -70,32 +70,54 @@ class App extends Component {
                           </div>
                         </Link>
                       ) : (
-                        <Link to="/">
-                          <div>
-                            <h3>Would you rather?</h3>
-                          </div>
-                        </Link>
-                      )}
-                    </Grid>
-
-                    <Grid item xs={5}>
-                      <div>
-                        <Button>
-                          <Link to="/leaderboard">
-                            <h3>leaderboard</h3>
+                          <Link to="/">
+                            <div>
+                              <h3>Would you rather?</h3>
+                            </div>
                           </Link>
-                        </Button>
-                        <Button>
-                          <Link to="/add">
-                            <h3>Create new Question</h3>
-                          </Link>
-                        </Button>
-                      </div>
+                        )}
                     </Grid>
+                    <Grid item xs={1}></Grid>
+                    <Grid item xs={1}>
+                      {this.props.loggedUser ? (
+                        <div>
+                          <Button>
+                            <Link to="/leaderboard">
+                              <h3>leaderboard</h3>
+                            </Link>
+                          </Button>
+                        </div>
+                      ) : (
+                          <Link to="/">
+                            <div>
+                              <h3></h3>{" "}
+                            </div>
+                          </Link>
+                        )}
+                    </Grid>
+                    <Grid item xs={1}></Grid>
                     <Grid item xs={3}>
+                      {this.props.loggedUser ? (
+                        <div>
+                          <Button>
+                            <Link to="/add">
+                              <h3>Create new Question</h3>
+                            </Link>
+                          </Button>
+                        </div>
+                      ) : (
+                          <Link to="/">
+                            <div>
+                              <h3></h3>{" "}
+                            </div>
+                          </Link>
+                        )}
+                    </Grid>
+                    <Grid item xs={2}></Grid>
+                    <Grid item xs={1}>
                       <div>
                         {this.props.loggedUser ? (
-                          <Button onClick={this.handleClick}>Logout</Button>
+                          <Button onClick={this.handleClick}><h4>Logout</h4></Button>
                         ) : null}
                       </div>
                     </Grid>
@@ -112,8 +134,8 @@ class App extends Component {
                     this.props.loggedUser ? (
                       <Questions />
                     ) : (
-                      <Redirect to="/login" />
-                    )
+                        <Redirect to="/login" />
+                      )
                   }
                 />
                 <Route
@@ -122,8 +144,8 @@ class App extends Component {
                     this.props.loggedUser ? (
                       <Leaderboard />
                     ) : (
-                      <Redirect to="/login" />
-                    )
+                        <Redirect to="/login" />
+                      )
                   }
                 />
                 <Route
@@ -132,8 +154,8 @@ class App extends Component {
                     this.props.loggedUser ? (
                       <Create />
                     ) : (
-                      <Redirect to="/login" />
-                    )
+                        <Redirect to="/login" />
+                      )
                   }
                 />
                 <Route
@@ -141,8 +163,8 @@ class App extends Component {
                   render={({ match }) => {
                     if (this.props.loggedUser) {
                       let question = this.props.polls[match.params.id];
-                      if(question){
-                      	let user = this.props.users[question.author];
+                      if (question) {
+                        let user = this.props.users[question.author];
                         return (
                           <Question
                             question={question}
@@ -153,14 +175,14 @@ class App extends Component {
                       }
                       else {
                         return <Redirect to="/nomatch" />
-                      }    
+                      }
                     } else {
                       return <Redirect to="/login" />;
                     }
                   }}
                 />
                 <Route path="/login" component={Loggin} />
-				<Route path="/nomatch" component={NoMatch} />
+                <Route path="/nomatch" component={NoMatch} />
                 <Route component={NoMatch} />
               </Switch>
             </Grid>

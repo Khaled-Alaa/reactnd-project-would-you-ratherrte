@@ -37,14 +37,14 @@ class Question extends Component {
   isAnswered = answer => {
     return answer
       ? this.props.question[answer].votes.filter(
-          user => user === this.props.loggedUser.id
-        ).length > 0
+        user => user === this.props.loggedUser.id
+      ).length > 0
       : this.props.question.optionOne.votes.filter(
-          user => user === this.props.loggedUser.id
-        ).length > 0 ||
-          this.props.question.optionTwo.votes.filter(
-            user => user === this.props.loggedUser.id
-          ).length > 0;
+        user => user === this.props.loggedUser.id
+      ).length > 0 ||
+      this.props.question.optionTwo.votes.filter(
+        user => user === this.props.loggedUser.id
+      ).length > 0;
   };
 
   render() {
@@ -52,8 +52,10 @@ class Question extends Component {
     return (
       <Paper className={styles.paper}>
         <Grid container className={styles.root} spacing={8} justify="center">
-          <Grid item xs={12}>
-            “Would You Rather”
+          <Grid item xs={4}>
+          </Grid>
+          <Grid item xs={6}>
+            <h2>Would You Rather ?</h2>
           </Grid>
           <Grid item xs={12}>
             <Grid
@@ -61,35 +63,25 @@ class Question extends Component {
               className={styles.root}
               spacing={8}
               justify="space-around">
-              <Grid item xs={2}>
+              <Grid item xs={5}></Grid>
+              <Grid item xs={1}>
                 <Avatar
                   alt={user.name}
                   src={user.avatarURL}
                   className={styles.avatar}
                 />
               </Grid>
-              <Grid item xs={4}>
+              <Grid item xs={6}>
                 Posted by:
                 {user.name}
               </Grid>
-              <Grid item xs={2}>
-                {moment(question.timestamp).format("DD/MM/YYYY hh:mm")}
-              </Grid>
-              {!this.isAnswered() ? (
-                <Grid item xs={2}>
-                  <Button color="secondary">
-                    <Link to={`/questions/${question.id}`} style={styles.link}>
-                      Answer Question
-                    </Link>
-                  </Button>
-                </Grid>
-              ) : null}
             </Grid>
           </Grid>
           {answerQuestion && !this.isAnswered() ? (
             <Grid item xs={12}>
               <Grid container className={styles.root} spacing={8}>
-                <Grid item xs={6}>
+              <Grid item xs={3}></Grid>
+                <Grid item xs={3}>
                   <button
                     onClick={() => {
                       this.answerQuestion("optionOne");
@@ -98,7 +90,7 @@ class Question extends Component {
                     {question.optionOne.text}
                   </button>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={3}>
                   <button
                     onClick={() => {
                       this.answerQuestion("optionTwo");
@@ -110,45 +102,45 @@ class Question extends Component {
               </Grid>
             </Grid>
           ) : (
-            <Grid item xs={12}>
-              <Grid container className={styles.root} spacing={8}>
-                <Grid item xs={6}>
-                  <div
-                    className={`btn ${
-                      this.isAnswered("optionOne") ? "red" : ""
-                    }`}>
-                    <h4>{question.optionOne.text}</h4>
-                    <p>{question.optionOne.votes.length} person answered</p>
-                    <p>
-                      answeres % :
+              <Grid item xs={12}>
+                <Grid container className={styles.root} spacing={8}>
+                  <Grid item xs={6}>
+                    <div
+                      className={`btn ${
+                        this.isAnswered("optionOne") ? "red" : ""
+                        }`}>
+                      <h4>{question.optionOne.text}</h4>
+                      <p>{question.optionOne.votes.length} person answered</p>
+                      <p>
+                        answeres % :
                       {(question.optionTwo.votes.length /
-                        (question.optionOne.votes.length +
-                          question.optionTwo.votes.length)) *
-                        100}
-                      %
+                          (question.optionOne.votes.length +
+                            question.optionTwo.votes.length)) *
+                          100}
+                        %
                     </p>
-                  </div>
-                </Grid>
-                <Grid item xs={6}>
-                  <div
-                    className={`btn ${
-                      this.isAnswered("optionTwo") ? "red" : ""
-                    }`}>
-                    <h4>{question.optionTwo.text}</h4>
-                    <p>{question.optionTwo.votes.length} person answered</p>
-                    <p>
-                      answeres % :
+                    </div>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <div
+                      className={`btn ${
+                        this.isAnswered("optionTwo") ? "red" : ""
+                        }`}>
+                      <h4>{question.optionTwo.text}</h4>
+                      <p>{question.optionTwo.votes.length} person answered</p>
+                      <p>
+                        answeres % :
                       {(question.optionTwo.votes.length /
-                        (question.optionOne.votes.length +
-                          question.optionTwo.votes.length)) *
-                        100}
-                      %
+                          (question.optionOne.votes.length +
+                            question.optionTwo.votes.length)) *
+                          100}
+                        %
                     </p>
-                  </div>
+                    </div>
+                  </Grid>
                 </Grid>
               </Grid>
-            </Grid>
-          )}
+            )}
         </Grid>
       </Paper>
     );

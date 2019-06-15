@@ -51,31 +51,32 @@ class Loggin extends Component {
         container
         className={styles.root}
         spacing={0}
+        item xs={10}
         justify="center"
         alignItems="center">
+        <Grid item xs={4}></Grid>
         {this.props.users ? (
-          <Grid item xs={8}>
+          <Grid item xs={4}>
             <Grid container spacing={0}>
               <Grid item xs={12}>
                 <div>
-                  sign in as:{" "}
-                  {this.state.user ? this.state.user.name : "Choose a user"}
+                  <h4>Sign In As:{" "}
+                    {this.state.user ? this.state.user.name : "Choose a user"}</h4>
                 </div>
               </Grid>
-              <Grid item xs={12}>
+              <Grid item xs={6}>
                 {Object.keys(this.props.users).map(user => (
                   <Paper
                     onClick={() => this.handleChoose(this.props.users[user])}
                     key={user}>
-                    <Avatar
+                    <span><Avatar
                       src={this.props.users[user].avatarURL}
-                      className={styles.avatar}
-                    />
-                    <div>{this.props.users[user].name}</div>
+                      className={styles.avatar} /></span>
+                    <h3>{this.props.users[user].name}</h3>
                   </Paper>
                 ))}
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={12}>
                 <Button
                   variant="contained"
                   color="primary"
@@ -86,10 +87,10 @@ class Loggin extends Component {
             </Grid>
           </Grid>
         ) : (
-          <Grid item xs={12}>
-            <div>Loading ....</div>
-          </Grid>
-        )}
+            <Grid item xs={12}>
+              <div>Loading ...</div>
+            </Grid>
+          )}
       </Grid>
     );
   }
