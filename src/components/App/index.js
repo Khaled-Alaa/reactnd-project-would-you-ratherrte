@@ -66,7 +66,7 @@ class App extends Component {
                       {this.props.loggedUser ? (
                         <Link to="/">
                           <div>
-                            <h3>{this.props.loggedUser.name}</h3>{" "}
+                            <h3>Hello, {this.props.loggedUser.name}</h3>{" "}
                           </div>
                         </Link>
                       ) : (
