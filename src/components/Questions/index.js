@@ -86,9 +86,8 @@ class Questions extends Component {
               {polls.map(q => {
                 let user = this.findUser(q.author);
                 return (
-                  <Grid item xs={10}>
+                  <Grid key={`${q.id} ${q.author}`} item xs={10}>
                     <Question
-                      key={`${q.id} ${q.author}`}
                       answerQuestion={false}
                       user={user}
                       question={q}
@@ -105,12 +104,11 @@ class Questions extends Component {
               {polls.map(q => {
                 let user = this.findUser(q.author);
                 return (
-                  <Grid item xs={10}>
+                  <Grid key={`${q.id}`} item xs={10}>
                     <Question
                       answerQuestion={false}
                       user={user}
                       question={q}
-                      key={`${q.id} ${q.author}`}
                     />
                   </Grid>
                 );

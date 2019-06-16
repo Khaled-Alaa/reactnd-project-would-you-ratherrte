@@ -42,16 +42,18 @@ class Leaderboard extends Component {
             ...Object.keys(this.props.users)
               .sort((a, b) => {
                 return (
-                  Object.keys(this.props.users[b].answers).length -
-                  Object.keys(this.props.users[a].answers).length
+                  (Object.keys(this.props.users[b].answers).length -
+                  Object.keys(this.props.users[a].answers).length)+
+                  (this.props.users[b].questions.length -
+                    this.props.users[a].questions.length)
                 );
               })
-              .sort((a, b) => {
-                return (
-                  this.props.users[b].questions.length -
-                  this.props.users[a].questions.length
-                );
-              })
+              //.sort((a, b) => {
+                //return (
+                  //this.props.users[b].questions.length -
+                  //this.props.users[a].questions.length
+                //);
+              //})
           ]
         : []
     });
@@ -68,18 +70,18 @@ class Leaderboard extends Component {
         alignItems="center">
           <Grid item xs={1}></Grid>
         {this.state.users.map(user => (
-          <Grid item xs={3} className={styles.item}>
+          <Grid key={Math.random()} item xs={3} className={styles.item}>
             <Paper className={styles.paper}>
               <Avatar 
                 src={this.props.users[user].avatarURL}
                 className={styles.avatar}
               />
-              <h3>{this.props.users[user].id}</h3>
+              <h3>User id: {this.props.users[user].id}</h3>
               <h3>
-                {Object.keys(this.props.users[user].answers).length} answers
+                Answers: {Object.keys(this.props.users[user].answers).length}
               </h3>
-              <h3>{this.props.users[user].questions.length} questions </h3>
-              <h3>{this.props.users[user].name}</h3>
+              <h3>Questions: {this.props.users[user].questions.length}</h3>
+              <h3>Name: {this.props.users[user].name}</h3>
             </Paper>
           </Grid>
         ))}

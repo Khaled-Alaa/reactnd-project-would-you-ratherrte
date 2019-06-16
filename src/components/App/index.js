@@ -124,6 +124,16 @@ class App extends Component {
                   path="/"
                   render={() =>
                     this.props.loggedUser ? (
+                      <Redirect to="/home" />
+                    ) : (
+                        <Redirect to="/login" />
+                      )
+                  }
+                />
+                <Route
+                  path="/home"
+                  render={() =>
+                    this.props.loggedUser ? (
                       <Questions />
                     ) : (
                         <Redirect to="/login" />

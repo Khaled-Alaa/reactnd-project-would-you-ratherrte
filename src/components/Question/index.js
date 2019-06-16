@@ -112,8 +112,8 @@ class Question extends Component {
                       <h4>{question.optionOne.text}</h4>
                       <p>{question.optionOne.votes.length} person answered</p>
                       <p>
-                        answeres % :
-                      {(question.optionTwo.votes.length /
+                        answeres %:
+                      {(question.optionOne.votes.length /
                           (question.optionOne.votes.length +
                             question.optionTwo.votes.length)) *
                           100}
@@ -129,7 +129,7 @@ class Question extends Component {
                       <h4>{question.optionTwo.text}</h4>
                       <p>{question.optionTwo.votes.length} person answered</p>
                       <p>
-                        answeres % :
+                        answeres %:
                       {(question.optionTwo.votes.length /
                           (question.optionOne.votes.length +
                             question.optionTwo.votes.length)) *
